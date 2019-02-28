@@ -9,7 +9,7 @@ BASE_URL = "git@github.com:usf-cs212-spring2019/"
 
 def run(cmd):
 	print("Running: {0}".format(cmd))
-	result = subprocess.run(cmd.split(" "), stdout=subprocess.PIPE)
+	result = subprocess.run(cmd.split(" "), stdout=subprocess.PIPE, shell=True)
 	return result.stdout.decode('utf-8')
 
 
