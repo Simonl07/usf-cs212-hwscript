@@ -7,9 +7,9 @@ from datetime import timedelta
 
 BASE_URL = "git@github.com:usf-cs212-spring2019/"
 
-def run(cmd):
+def run(cmd, sh=False):
 	print("Running: {0}".format(cmd))
-	result = subprocess.run(cmd.split(" "), stdout=subprocess.PIPE, shell=True)
+	result = subprocess.run(cmd.split(" "), stdout=subprocess.PIPE, shell=sh)
 	return result.stdout.decode('utf-8')
 
 
@@ -46,7 +46,7 @@ def grade(assignment_name, due_date, gh_usernames):
 			else:
 				grade_coefficient = 0.9
 
-		run('#!/bin/sh;/home/public/cs212/homework {0} {1}'.format(username.strip(), assignment_name))
+		run('/home/public/cs212/homework {0} {1}'.format(username.strip(), assignment_name), sh=True)
 
 
 	os.chdir('..')
