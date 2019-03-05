@@ -46,7 +46,7 @@ def grade(assignment_name, due_date, gh_usernames):
 			else:
 				grade_coefficient = 0.9
 
-		run('/home/public/cs212/homework {0} {1}'.format(username.strip(), assignment_name), sh=True)
+		print(run('/home/public/cs212/homework {0} {1}'.format(username.strip(), assignment_name), sh=True))
 
 
 	os.chdir('..')
