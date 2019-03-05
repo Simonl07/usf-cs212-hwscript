@@ -26,7 +26,6 @@ def grade(assignment_name, due_date, gh_usernames):
 	with open(gh_usernames) as f:
 		lines = f.readlines()
 
-
 	if os.path.exists("temp/"):
 		shutil.rmtree('temp/')
 	os.mkdir('temp/')
@@ -45,12 +44,13 @@ def grade(assignment_name, due_date, gh_usernames):
 				grade_coefficient = 0.8
 			else:
 				grade_coefficient = 0.9
+		print("CHECK" + run('/home/public/cs212/homework {0} {1}'.format(username.strip(), assignment_name), sh=True))
+		os.chdir("../")
+		print("END")
 
-		print(run('/home/public/cs212/homework {0} {1}'.format(username.strip(), assignment_name), sh=True))
 
-
-	os.chdir('..')
-	os.rmdir('temp/')
+	os.chdir('../')
+	shutil.rmtree('temp/')
 	pass
 
 if __name__ == '__main__':
